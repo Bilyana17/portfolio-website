@@ -1,0 +1,298 @@
+:root {
+    --primaryColor: #0382f8;
+    --secondaryColor: #731665;
+    --tertiaryColor: #2e92ef;
+    --lighterGray: #fafafa;
+    --font-family: 'Lato', sans-serif;
+    --font-size: 16px;
+    --font-weight-normal: 400;
+    --line-height-default: 1.6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size);
+    /* Sets the font size to 16px */
+    line-height: var(--line-height-default);
+    /* Sets the font size to 1.6 */
+}
+
+.page-header {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+.page-header_item {
+    width: 20px;
+    border-radius: 10px;
+    flex: 0 1 60px;
+}
+
+
+.page-header_item:last-child {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.navigation-list li {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+main {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.job-title {
+    font-weight: 700;
+    color: var(--secondaryColor)
+}
+
+.profile_portrait {
+    float: left;
+    width: 250px;
+    margin-right: 40px;
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--secondaryColor)
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--secondaryColor);
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+p {
+    font-size: 18px;
+}
+
+a {
+    color: var(--tertiaryColor)
+}
+
+a:hover,
+a:focus {
+    /* No underlining when hovering over a link */
+    text-decoration: none;
+}
+
+a:visited {
+    /* visited link */
+    color: #9c04be;
+}
+
+a:active {
+    /* selected link */
+    color: #0168c9;
+}
+
+.button,
+button {
+    /* overwrites browser defaults and resets the border */
+    border: none;
+    /* takes the font from the outer container */
+    display: block;
+    font-family: inherit;
+    /* styles the background color, font color, and text decoration (underline, etc.) of the button */
+    background-color: var(--primaryColor);
+    color: white;
+    text-decoration: none;
+    /* adds spacing to the button (this will be discussed more in-debth later) */
+    padding: 10px;
+    border-radius: 3px;
+    /* give the button border with a width of 2px, a type of solid, and a color in RGBA format */
+    border-bottom: 2px solid rgba(105, 2, 202, 0.5);
+    transition-duration: 0.2s;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+    /*lets the mous appear as a hand when hovering over the button*/
+    cursor: pointer;
+    /* reduce opacity of the button to 80% */
+    opacity: 0.8;
+}
+
+.button_secondary {
+    background-color: var(--secondaryColor);
+    color: #fff;
+}
+
+.navigation-list_item--active {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.action_buttons {
+    clear: both;
+    display: flex;
+    justify-content: center;
+    gap: 20px
+}
+
+.page-footer {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+/* start grid fallback */
+.grid_item {
+    display: inline-block;
+    width: 33%;
+    background-color: var(--lighterGray);
+}
+
+/* end grid fallback */
+
+@supports (display: grid) {
+    .grid {
+        display: grid;
+        /* grid-template-columns: 300px 300px 300px; fractions are better than pixes - they are responsive */
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        margin: 0;
+    }
+}
+
+.grid_item {
+    background-color: var(--lighterGray);
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    transition: transform 0.3s ease-out;
+}
+
+.grid_item:hover {
+    background-color: #171717;
+    color: #ffffff;
+    transform: scale(1.1);
+    /* Increase the scale factor for a larger hover effect */
+    cursor: pointer;
+    /* Set the cursor to pointer on hover */
+}
+
+.grid_item:last-child {
+    grid-column: 3 / 3;
+    grid-row: 1 / 3;
+}
+
+.table-listing {
+    clear: both;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes color-change {
+    0% {
+        fill: #edc655;
+    }
+
+    50% {
+        fill: #fcffad;
+    }
+
+    100% {
+        fill: #f76414;
+    }
+}
+
+.sun {
+    animation-duration: 4s;
+    animation-name: color-change;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes cloud-move {
+    from {
+        transform: translate(0, 50px);
+    }
+
+    to {
+        transform: translate(200px, 50px);
+    }
+}
+
+.cloud-front {
+    animation: 30s cloud-move infinite alternate linear;
+}
+
+@keyframes cloud-move-reverse {
+    from {
+        transform: translate(446px, 48px);
+    }
+
+    to {
+        transform: translate(100px, 48px);
+    }
+}
+
+.cloud-back {
+    animation: 34s cloud-move-reverse infinite alternate linear;
+}
+
+
+@media all and (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media all and (max-width: 750px) {
+    .grid {
+        grid-gap: 10px
+    }
+
+    .grid_item:last-child {
+        grid-column: auto / auto;
+        grid-row: auto / auto;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
