@@ -183,6 +183,11 @@ li {
     list-style: none;
 }
 
+.contact-type {
+    padding: 0;
+}
+
+
 .action_buttons {
     clear: both;
     display: -webkit-box;
